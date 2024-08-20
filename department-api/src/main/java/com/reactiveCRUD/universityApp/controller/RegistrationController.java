@@ -25,27 +25,27 @@ public class RegistrationController {
 	
 	@Autowired
 	private RegistrationService registrationService;
-
+    // get 
 	@GetMapping
 	public Flux<> getAll() {
 		System.out.println("::will returns ALL Students records::");
 		return registrationService.getAll();
 	}
 	
-	
+	//get id
 	@GetMapping("{id}")
 	public Mono<Student> getById(@PathVariable("id") final String id) {
 		System.out.println("::will return a Student record::");
 		return registrationService.getById(id);
 	}
 	
-
+        // put id
 	@PutMapping("{id}")
 	public Mono updateById(@PathVariable("id") final String id, @RequestBody final Student student) {
 		System.out.println("::update the Student record::");
 		return registrationService.update(id, student);
 	}
-
+         // add 
 	@PostMapping
 	public Mono save(@RequestBody final Student student) {
 		System.out.println("will insert the student's record :: "+ student.getId() + " :: " + student.getFirstName());
